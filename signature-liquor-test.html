@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signature Liquor Employee Knowledge Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: 700;
+            color: #d4af37;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .level-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .level-card:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .level-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .level-subtitle {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .test-options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .test-btn {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .test-btn:hover {
+            background: rgba(212, 175, 55, 0.3);
+            transform: translateX(5px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-header {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .modal-subtitle {
+            font-size: 13px;
+            color: #999;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #d4af37;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #e5c158;
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group select option {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .modal-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            padding: 12px 24px;
+            border: 1px solid #d4af37;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: #d4af37;
+            color: #0f0f0f;
+        }
+
+        .btn-primary:hover {
+            background: #e5c158;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #d4af37;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.2);
+        }
+
+        .quiz-container {
+            display: none;
+        }
+
+        .quiz-container.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #d4af37, #e5c158);
+            transition: width 0.3s ease;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .quiz-info {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .quiz-info-title {
+            font-size: 14px;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .question-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .question-number {
+            font-size: 12px;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .answers-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .answer-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            color: #ffffff;
+            padding: 16px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .answer-btn:hover:not(.disabled) {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: #d4af37;
+            transform: translateX(5px);
+        }
+
+        .answer-btn.disabled {
+            cursor: not-allowed;
+        }
+
+        .answer-btn.correct {
+            background: rgba(76, 175, 80, 0.2);
+            border-color: #4CAF50;
+            color: #4CAF50;
+        }
+
+        .answer-btn.wrong {
+            background: rgba(244, 67, 54, 0.2);
+            border-color: #f44336;
+            color: #f44336;
+        }
+
+        .feedback {
+            display: none;
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 4px solid #4CAF50;
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ffffff;
+        }
+
+        .feedback.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .feedback.wrong {
+            background: rgba(244, 67, 54, 0.1);
+            border-left-color: #f44336;
+        }
+
+        .next-btn {
+            background: #d4af37;
+            color: #0f0f0f;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: none;
+            transition: all 0.2s ease;
+        }
+
+        .next-btn.show {
+            display: inline-block;
+        }
+
+        .next-btn:hover {
+            background: #e5c158;
+            transform: translateY(-2px);
+        }
+
+        .score-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .score-item {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .score-label {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .score-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #d4af37;
+        }
+
+        .results-container {
+            display: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .results-header {
+            font-size: 28px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+
+        .results-employee {
+            font-size: 16px;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .results-details {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .circular-score {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(#d4af37 0deg, #d4af37 var(--score-deg), rgba(212, 175, 55, 0.2) var(--score-deg), rgba(212, 175, 55, 0.2) 360deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .score-percent {
+            font-size: 48px;
+            font-weight: 700;
+            color: #d4af37;
+        }
+
+        .score-label-center {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 8px;
+        }
+
+        .rating-section {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .rating-label {
+            font-size: 13px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .rating-result {
+            font-size: 22px;
+            font-weight: 700;
+            color: #d4af37;
+        }
+
+        .manager-notes {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .manager-notes-label {
+            font-size: 13px;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .manager-notes textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 6px;
+            color: #ffffff;
+            padding: 12px;
+            font-size: 13px;
+            font-family: inherit;
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .manager-notes textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .results-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .btn-results {
+            padding: 12px 20px;
+            border: 1px solid #d4af37;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-print {
+            background: #d4af37;
+            color: #0f0f0f;
+        }
+
+        .btn-print:hover {
+            background: #e5c158;
+            transform: translateY(-2px);
+        }
+
+        .btn-restart {
+            background: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+        }
+
+        .btn-restart:hover {
+            background: rgba(212, 175, 55, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .question-box {
+                padding: 20px;
+            }
+
+            .question-text {
+                font-size: 16px;
+            }
+
+            .answer-btn {
+                font-size: 13px;
+                padding: 12px 16px;
+            }
+
+            .score-circle {
+                width: 150px;
+                height: 150px;
+            }
+
+            .score-percent {
+                font-size: 36px;
+            }
+
+            .results-header {
+                font-size: 22px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 200px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .levels-grid,
+            .quiz-container {
+                display: none !important;
+            }
+
+            .results-container {
+                border: none;
+                background: white;
+            }
+
+            .results-header,
+            .rating-result {
+                color: #d4af37;
+            }
+
+            .btn-results {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🍷 Signature Liquor</div>
+            <div class="subtitle">Employee Knowledge Test</div>
+        </header>
+
+        <div id="levelsView" class="levels-grid">
+            <div class="level-card" onclick="selectLevel(1)">
+                <div class="level-title">Level 1</div>
+                <div class="level-subtitle">Beginner</div>
+                <div class="test-options">
+                    <div class="test-btn">Test 1A</div>
+                    <div class="test-btn">Test 1B</div>
+                    <div class="test-btn">Test 1C</div>
+                </div>
+            </div>
+
+            <div class="level-card" onclick="selectLevel(2)">
+                <div class="level-title">Level 2</div>
+                <div class="level-subtitle">Intermediate</div>
+                <div class="test-options">
+                    <div class="test-btn">Test 2A</div>
+                    <div class="test-btn">Test 2B</div>
+                    <div class="test-btn">Test 2C</div>
+                </div>
+            </div>
+
+            <div class="level-card" onclick="selectLevel(3)">
+                <div class="level-title">Level 3</div>
+                <div class="level-subtitle">Advanced</div>
+                <div class="test-options">
+                    <div class="test-btn">Test 3A</div>
+                    <div class="test-btn">Test 3B</div>
+                    <div class="test-btn">Test 3C</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="passwordModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">Manager Authentication</div>
+                <div class="modal-subtitle">This test requires manager authorization</div>
+                <div class="form-group">
+                    <label>Employee Name</label>
+                    <input type="text" id="employeeName" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label>Store Location</label>
+                    <select id="storeLocation">
+                        <option value="">Select Location</option>
+                        <option value="Beaumont">Beaumont</option>
+                        <option value="Stony Plain">Stony Plain</option>
+                        <option value="Spruce Grove">Spruce Grove</option>
+                        <option value="149 Street">149 Street</option>
+                        <option value="Camrose">Camrose</option>
+                        <option value="Wainwright">Wainwright</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Manager Password</label>
+                    <input type="password" id="managerPassword" placeholder="Enter password">
+                </div>
+                <div id="passwordError" style="color: #f44336; font-size: 12px; margin-bottom: 15px; display: none;"></div>
+                <div class="modal-buttons">
+                    <button class="btn-secondary" onclick="backToLevels()">Cancel</button>
+                    <button class="btn-primary" onclick="verifyPassword()">Start Test</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="quizContainer" class="quiz-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="progress-info">
+                <span id="currentQuestion">Question 1 of 20</span>
+                <span id="currentLevel">Level 1 - Test 1A</span>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-info">
+                    <div class="quiz-info-title">Employee</div>
+                    <div id="quizEmployee">Loading...</div>
+                </div>
+                <div class="quiz-info">
+                    <div class="quiz-info-title">Store</div>
+                    <div id="quizStore">Loading...</div>
+                </div>
+            </div>
+
+            <div class="question-box">
+                <div class="question-number" id="questionNumber"></div>
+                <div class="question-text" id="questionText"></div>
+                <div class="answers-grid" id="answersGrid"></div>
+                <div class="feedback" id="feedback"></div>
+            </div>
+
+            <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+
+            <div class="score-dashboard">
+                <div class="score-item">
+                    <div class="score-label">Correct</div>
+                    <div class="score-value" id="correctCount">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">Wrong</div>
+                    <div class="score-value" id="wrongCount">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">Score</div>
+                    <div class="score-value" id="currentScore">0%</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultsContainer" class="results-container">
+            <div class="results-header">Test Complete</div>
+            <div class="results-employee" id="resultsEmployee"></div>
+            <div class="results-details" id="resultsDetails"></div>
+
+            <div class="circular-score">
+                <div class="score-circle" id="scoreCircle">
+                    <div class="score-percent" id="finalScore">0%</div>
+                    <div class="score-label-center">Final Score</div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 30px 0;">
+                <div class="score-item">
+                    <div class="score-label">Total Questions</div>
+                    <div class="score-value" id="totalQuestions">20</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">Correct Answers</div>
+                    <div class="score-value" id="totalCorrect">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">Wrong Answers</div>
+                    <div class="score-value" id="totalWrong">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">Accuracy</div>
+                    <div class="score-value" id="accuracy">0%</div>
+                </div>
+            </div>
+
+            <div class="rating-section">
+                <div class="rating-label">Performance Rating</div>
+                <div class="rating-result" id="ratingResult">-</div>
+            </div>
+
+            <div class="manager-notes">
+                <div class="manager-notes-label">Manager Notes (Optional)</div>
+                <textarea id="managerNotes" placeholder="Add any feedback or notes about this test..."></textarea>
+            </div>
+
+            <div class="results-buttons">
+                <button class="btn-results btn-print" onclick="printResults()">📄 Print Results</button>
+                <button class="btn-results btn-restart" onclick="restart()">🔄 Restart</button>
+                <button class="btn-results btn-restart" onclick="backToLevels()">← Back to Levels</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const MANAGER_PASSWORD = "4088568890";
+
+        let currentState = {
+            level: null,
+            test: null,
+            employeeName: null,
+            storeLocation: null,
+            currentQuestion: 0,
+            score: 0,
+            questions: [],
+            answers: []
+        };
+
+        const questionBanks = {
+            1: [
+                { q: "What is the primary grain used in beer production?", a: ["Barley", "Wheat", "Corn", "Rice"], c: 0, e: "Barley is the most commonly used grain in beer." },
+                { q: "How many standard sizes does a wine bottle typically come in?", a: ["2", "4", "6", "8"], c: 2, e: "Standard wine bottles include 750ml and 1.5L sizes." },
+                { q: "Which spirit is primarily made from agave?", a: ["Whisky", "Tequila", "Rum", "Vodka"], c: 1, e: "Tequila is distilled from the blue agave plant, native to Mexico." },
+                { q: "What is the typical ABV (Alcohol By Volume) range for beer?", a: ["2-5%", "5-8%", "10-15%", "15-20%"], c: 0, e: "Most beers range from 4-6% ABV, though craft beers can vary." },
+                { q: "Which wine grape is known for producing red wines?", a: ["Chardonnay", "Sauvignon Blanc", "Cabernet Sauvignon", "Riesling"], c: 2, e: "Cabernet Sauvignon is a classic red wine grape." },
+                { q: "What does 'dry' mean when describing a wine?", a: ["Low alcohol content", "Low residual sugar", "High acidity", "Strong tannins"], c: 1, e: "A dry wine has little to no residual sugar remaining after fermentation." },
+                { q: "Which of these is NOT a type of beer style?", a: ["Lager", "Ale", "Stout", "Cognac"], c: 3, e: "Cognac is a brandy, not a beer style." },
+                { q: "What is the standard size of a shot glass in Alberta?", a: ["30 ml", "45 ml", "60 ml", "75 ml"], c: 0, e: "A standard shot glass in Canada is 30ml." },
+                { q: "Which country is known for producing Champagne?", a: ["Italy", "Spain", "France", "Germany"], c: 2, e: "Champagne is produced exclusively in the Champagne region of France." },
+                { q: "What percentage of alcohol makes spirits different from other drinks?", a: ["Above 15%", "Above 20%", "Above 30%", "Above 40%"], c: 2, e: "Spirits typically contain 40% ABV or higher." },
+                { q: "Which of these is a fortified wine?", a: ["Pinot Noir", "Sherry", "Sauvignon Blanc", "Riesling"], c: 1, e: "Sherry is a fortified wine from Spain." },
+                { q: "What does 'malted' mean in beer production?", a: ["Filtered", "Aged in oak", "Grain treated to convert starches to sugars", "Mixed with water"], c: 2, e: "Malting is a process where grain is soaked and dried to develop fermentable sugars." },
+                { q: "Which spirit is distilled from fermented fruit juices?", a: ["Rum", "Brandy", "Gin", "Vodka"], c: 1, e: "Brandy is made from distilled wine or fermented fruit juice." },
+                { q: "What is the legal drinking age in Alberta?", a: ["18", "19", "20", "21"], c: 1, e: "The legal drinking age in Alberta is 19 years old." },
+                { q: "What does a sommelier primarily do?", a: ["Brew beer", "Select and recommend wines", "Distill spirits", "Manage vineyards"], c: 1, e: "A sommelier is a wine expert who helps customers select wines." },
+                { q: "Which glass type is typically used for red wine?", a: ["Flute", "Highball", "Balloon/Tulip", "Shot glass"], c: 2, e: "Red wine is traditionally served in larger, rounder glasses to aerate the wine." },
+                { q: "What is the main ingredient in vodka?", a: ["Grapes", "Grains or potatoes", "Sugar cane", "Agave"], c: 1, e: "Vodka can be distilled from grains, potatoes, or other starches." },
+                { q: "What region is famous for Scotch whisky?", a: ["England", "Ireland", "Scotland", "Wales"], c: 2, e: "Scotch whisky can only be produced in Scotland." },
+                { q: "What does 'proof' measure on a liquor bottle?", a: ["Quality", "Alcohol content", "Age", "Purity"], c: 1, e: "Proof is twice the alcohol by volume percentage." },
+                { q: "Which is NOT an ingredient commonly found in gin?", a: ["Juniper berries", "Botanicals", "Hops", "Grains"], c: 2, e: "Hops are used in beer, not gin. Gin primarily uses juniper and botanicals." }
+            ],
+            2: [
+                { q: "What is the difference between a Pilsner and a Lager?", a: ["Lagers are always darker", "Pilsner is a type of lager", "They have different alcohol content", "Lagers use ale yeast"], c: 1, e: "Pilsner is a specific style of lager, known for its crisp, golden character." },
+                { q: "Describe the primary characteristics of a wine with high tannins.", a: ["Sweet and fruity", "Dry, astringent mouthfeel", "Light and delicate", "Full of acidity"], c: 1, e: "Tannins create a drying sensation in the mouth and are common in red wines." },
+                { q: "What is the primary difference between Tequila and Mezcal?", a: ["Tequila is stronger", "Mezcal uses different agave plant", "Tequila is from a specific region", "No significant difference"], c: 2, e: "Tequila must come from the Tequila region of Mexico and use blue agave specifically." },
+                { q: "Which beer style is characterized by high bitterness from hops?", a: ["Stout", "Blonde Ale", "IPA (India Pale Ale)", "Wheat Beer"], c: 2, e: "IPAs are known for their bold, hoppy, and bitter flavor profile." },
+                { q: "What does 'Old World' wine typically refer to?", a: ["Aged wines over 20 years", "Wines from Europe", "Expensive wines", "Organic wines"], c: 1, e: "Old World refers to wines from traditional wine-producing regions in Europe." },
+                { q: "What type of yeast is used in ale production?", a: ["Bottom-fermenting", "Top-fermenting", "Wild yeast", "Neutral yeast"], c: 1, e: "Ales use top-fermenting yeast, which produces fuller, fruitier flavors." },
+                { q: "Which bourbon must be aged in new charred oak barrels?", a: ["All bourbon", "Small batch bourbon", "Single barrel bourbon", "No such requirement"], c: 0, e: "All authentic bourbon must be aged in new charred oak barrels by law." },
+                { q: "What is the primary flavor component in Champagne called?", a: ["Tannins", "Acidity", "Umami", "Astringency"], c: 1, e: "Champagne's signature character comes from its high acidity and effervescence." },
+                { q: "How should you approach upselling alcohol responsibly?", a: ["Always suggest premium brands", "Suggest based on customer preference, not pressure", "Push higher-priced items", "Let customer decide without input"], c: 1, e: "Responsible upselling focuses on customer satisfaction and genuine recommendations." },
+                { q: "What does 'body' mean when describing wine?", a: ["The color intensity", "The weight and mouthfeel", "The alcohol percentage", "The food pairing"], c: 1, e: "Body refers to the fullness or lightness of the wine in your mouth." },
+                { q: "Which wine region is famous for Riesling?", a: ["Bordeaux", "Alsace", "Tuscany", "Napa"], c: 1, e: "Alsace in France is renowned for high-quality Riesling wines." },
+                { q: "What is the key difference between Prosecco and Champagne?", a: ["Prosecco is from Italy", "Different production methods", "Prosecco is more affordable", "All of the above"], c: 2, e: "While Prosecco is Italian and cheaper, the main difference is the production method." },
+                { q: "How do you properly recommend a substitute product?", a: ["Never suggest alternatives", "Suggest based on customer budget and taste", "Always recommend more expensive items", "Match flavor profile and price point"], c: 3, e: "Good substitutions match the customer's original selection in taste and value." },
+                { q: "What's the difference between Cognac and Brandy?", a: ["Cognac is stronger", "Cognac is from Cognac region of France", "Brandy is less refined", "No real difference"], c: 1, e: "Cognac must be produced in the Cognac region; all Cognac is brandy, but not all brandy is Cognac." },
+                { q: "What grape produces most white wines in Bordeaux?", a: ["Sauvignon Blanc", "Semillon", "Chardonnay", "Pinot Grigio"], c: 0, e: "Sauvignon Blanc is the primary white grape in Bordeaux production." },
+                { q: "What is an IBU in beer terminology?", a: ["International Beer Unit", "India Beer Ultimate", "International Bitterness Unit", "Ingredient Balance Unit"], c: 2, e: "IBU measures bitterness from hops in beer." },
+                { q: "How do you identify a customer who should NOT be served alcohol?", a: ["Young appearance", "Signs of intoxication", "Demanding attitude", "Late hour"], c: 1, e: "Never serve anyone showing signs of intoxication, regardless of other factors." },
+                { q: "What is the proper temperature range for serving white wine?", a: ["Room temperature", "45-50°F", "32-35°F", "55-60°F"], c: 1, e: "Most white wines are best served chilled between 45-50°F." },
+                { q: "Which spirit has specific production rules defining it as 'bourbon'?", a: ["Vodka", "Bourbon", "Gin", "Rum"], c: 1, e: "Bourbon must be made in the USA and meet strict aging and content requirements." },
+                { q: "What's the primary role of the head bartender in responsible service?", a: ["Make strongest drinks", "Ensure customer safety and proper ID checks", "Increase sales only", "Accept any order without question"], c: 1, e: "Responsible service prioritizes customer safety and legal compliance." }
+            ],
+            3: [
+                { q: "Name the 5 main regions of Scotland known for Scotch whisky production.", a: ["Highlands, Speyside, Islay, Campbeltown, Lowlands", "North, South, East, West, Central", "Highland, Valley, Island, Coast, Inland", "Major, Minor, Premium, Classic, Rare"], c: 0, e: "These five regions each produce distinct Scotch styles." },
+                { q: "What are the strict legal requirements for bourbon production in the USA?", a: ["Any whiskey aged 2+ years", "Minimum 51% corn mash, new charred oak barrels, 80+ proof", "Produced in Kentucky only", "Minimum 10 years aging"], c: 1, e: "Federal law defines bourbon's strict composition, barrel, and proof requirements." },
+                { q: "Explain the difference between Old World and New World wine production philosophies.", a: ["Old World is better quality", "Old World emphasizes terroir; New World emphasizes fruit and oak", "No significant difference", "Old World uses younger vines"], c: 1, e: "Old World focuses on expressing place (terroir); New World focuses on ripe fruits and winemaking techniques." },
+                { q: "What is the Champagne method (Méthode Champenoise)?", a: ["Mechanical bottling", "Second fermentation in the bottle", "Long barrel aging", "High pressure fermentation"], c: 1, e: "The traditional method involves secondary fermentation directly in sealed bottles." },
+                { q: "How do you distinguish Champagne from Prosecco and Cava?", a: ["All are identical", "Champagne uses Méthode Champenoise; Prosecco and Cava use different methods", "Cava is stronger", "Prosecco is from Spain"], c: 1, e: "The production method, region, and grape varieties differentiate these sparkling wines." },
+                { q: "What are the key characteristics of a complex Scotch from Islay?", a: ["Light and floral", "Smoky, peaty, maritime influence", "Sweet and fruity", "Light with vanilla notes"], c: 1, e: "Islay Scotches are known for robust peat smoke and coastal character." },
+                { q: "Describe the difference between fermentation and aging in wine.", a: ["Same process", "Fermentation converts sugar to alcohol; aging develops flavor", "Fermentation develops flavor only", "Aging happens in bottles only"], c: 1, e: "Fermentation creates alcohol; aging in barrels and bottles develops complexity." },
+                { q: "What is the significance of terroir in wine quality?", a: ["Marketing term only", "Climate, soil, and geography create unique characteristics", "Only matters for expensive wines", "Determines alcohol content"], c: 1, e: "Terroir encompasses all environmental factors that influence grape characteristics." },
+                { q: "Handle this scenario: A customer appears intoxicated but insists they need 'just one more drink'.", a: ["Serve them anyway", "Politely refuse and offer water/food", "Serve if they promise to leave soon", "Check with manager only"], c: 1, e: "Always refuse service to intoxicated customers, regardless of their requests." },
+                { q: "What customer profile should never be served alcohol, and why?", a: ["Anyone over 21/19", "Anyone under legal age, anyone intoxicated, anyone you suspect is pregnant", "Only first-time customers", "Only tourists"], c: 1, e: "Legal and health requirements make these groups ineligible for service." },
+                { q: "Explain the concept of 'oaking' in wine and spirit production.", a: ["Removing impurities", "Aging in oak to add vanilla, spice, and depth", "A fermentation method", "A filtration process"], c: 1, e: "Oak barrels impart flavors, color, and tannins to wine and spirits." },
+                { q: "What are the differences between single-barrel and small-batch bourbon?", a: ["No difference", "Single-barrel = one barrel; small-batch = limited barrels blended together", "Small-batch is always superior", "Single-barrel is always premium"], c: 1, e: "Single-barrel is from one barrel; small-batch blends multiple barrels for consistency." },
+                { q: "How do you approach a customer requesting a pairing recommendation for a specific dish?", a: ["Never recommend without asking", "Ask about dish, prep, sauce; recommend by flavor profile match", "Always suggest expensive wine", "Suggest red for all meals"], c: 1, e: "Thoughtful pairing requires understanding the dish's components." },
+                { q: "What role do hops, malt, and yeast play in craft beer differentiation?", a: ["No significant role", "Each influences aroma, flavor, body, and finish distinctly", "Only hops matter", "Only malt matters"], c: 1, e: "These three components are the primary levers for craft beer style variation." },
+                { q: "Describe a customer scenario where you must refuse service and the appropriate response.", a: ["Never refuse a sale", "Customer shows ID signs (pupils, speech, balance issues); politely explain and offer alternatives", "Only refuse if they argue", "Only refuse if rude"], c: 1, e: "Responsible service means refusing sales when customer safety is at risk." },
+                { q: "What is the significance of yeast strain selection in brewing?", a: ["Minimal impact", "Defines fermentation temperature, flavor compounds, and body", "Only for expensive craft beer", "Interchangeable between beers"], c: 1, e: "Different yeast strains produce vastly different flavor and aroma profiles." },
+                { q: "Explain the concept of 'finish' in wine and spirit tasting.", a: ["The color of the drink", "Lingering flavors after swallowing", "The alcohol burn", "The bottle closure"], c: 1, e: "Finish refers to the aftertaste and how flavors evolve after drinking." },
+                { q: "How do you manage inventory awareness for premium products?", a: ["Ignore inventory", "Track stock, identify slow movers, suggest faster movers", "Push all premium items equally", "Only count at year-end"], c: 1, e: "Smart inventory management improves sales and customer recommendations." },
+                { q: "What's the difference between a 'dry' beer and 'dry' wine?", a: ["Same meaning", "Wine: low sugar; beer: crisp, clean finish", "Opposite meanings", "Beer has no dry option"], c: 1, e: "Dry wine has low residual sugar; dry beer has a crisp, clean flavor." },
+                { q: "Describe how to recommend premium spirits to a budget-conscious customer responsibly.", a: ["Don't recommend premium", "Understand budget, suggest premium at price point, highlight value", "Push highest price only", "Only sell bottom shelf"], c: 1, e: "Good recommendations balance customer budget with quality and value perception." },
+                { q: "What is the legal responsibility of a liquor store employee regarding underage service?", a: ["Not responsible", "Verify ID and refuse service if underage; documentation protects store", "Only manager is responsible", "Use judgment on appearance only"], c: 1, e: "Employees bear legal responsibility for checking ID and refusing underage sales." },
+                { q: "Explain the impact of malting process variations on beer flavor.", a: ["No impact", "Different roasts create flavors from light/crisp to dark/roasty", "All malts taste identical", "Only affects color"], c: 1, e: "Malt roasting levels directly influence beer color, body, and flavor complexity." },
+                { q: "How do you handle a customer who disputes a high-value bottle's authenticity?", a: ["Dismiss their concern", "Listen, verify with manager, check provenance if possible", "Insist bottle is genuine", "Offer discount to appease"], c: 1, e: "Professional handling protects store reputation and customer trust." },
+                { q: "What is the relationship between acidity and aging potential in wine?", a: ["No relationship", "Higher acidity generally enables longer aging potential", "High acidity shortens shelf life", "Only affects taste"], c: 1, e: "Acidity preserves wines and allows them to age gracefully." }
+            ]
+        };
+
+        const ratingRanges = {
+            1: [
+                { min: 0, max: 59, label: "Needs Basic Training" },
+                { min: 60, max: 74, label: "Improving" },
+                { min: 75, max: 89, label: "Good Beginner Knowledge" },
+                { min: 90, max: 100, label: "Ready for Regular Floor Shift" }
+            ],
+            2: [
+                { min: 0, max: 59, label: "Needs Product Training" },
+                { min: 60, max: 74, label: "Fair Store Knowledge" },
+                { min: 75, max: 89, label: "Strong Sales Floor Knowledge" },
+                { min: 90, max: 100, label: "Ready for Senior Shift Duties" }
+            ],
+            3: [
+                { min: 0, max: 59, label: "Needs Advanced Training" },
+                { min: 60, max: 74, label: "Good But Needs Practice" },
+                { min: 75, max: 89, label: "Supervisor Ready" },
+                { min: 90, max: 100, label: "Product Specialist / Manager Level" }
+            ]
+        };
+
+        function selectLevel(level) {
+            currentState.level = level;
+            currentState.test = String.fromCharCode(65 + Math.floor(Math.random() * 3));
+            document.getElementById('passwordModal').classList.add('active');
+        }
+
+        function verifyPassword() {
+            const password = document.getElementById('managerPassword').value;
+            const name = document.getElementById('employeeName').value;
+            const location = document.getElementById('storeLocation').value;
+            const errorEl = document.getElementById('passwordError');
+
+            if (!name.trim()) {
+                errorEl.textContent = "Please enter employee name.";
+                errorEl.style.display = "block";
+                return;
+            }
+
+            if (!location) {
+                errorEl.textContent = "Please select store location.";
+                errorEl.style.display = "block";
+                return;
+            }
+
+            if (password !== MANAGER_PASSWORD) {
+                errorEl.textContent = "Incorrect password. Please ask manager.";
+                errorEl.style.display = "block";
+                return;
+            }
+
+            currentState.employeeName = name;
+            currentState.storeLocation = location;
+            errorEl.style.display = "none";
+
+            startQuiz();
+        }
+
+        function startQuiz() {
+            document.getElementById('passwordModal').classList.remove('active');
+
+            const bank = questionBanks[currentState.level];
+            const questionCount = currentState.level === 1 ? 15 : (currentState.level === 2 ? 20 : 25);
+            const shuffled = bank.sort(() => 0.5 - Math.random()).slice(0, questionCount);
+
+            currentState.questions = shuffled;
+            currentState.currentQuestion = 0;
+            currentState.score = 0;
+            currentState.answers = [];
+
+            document.getElementById('levelsView').style.display = 'none';
+            document.getElementById('quizContainer').classList.add('active');
+
+            document.getElementById('quizEmployee').textContent = currentState.employeeName;
+            document.getElementById('quizStore').textContent = currentState.storeLocation;
+            document.getElementById('currentLevel').textContent = `Level ${currentState.level} - Test ${currentState.level}${currentState.test}`;
+
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = currentState.questions[currentState.currentQuestion];
+            const total = currentState.questions.length;
+            const number = currentState.currentQuestion + 1;
+
+            document.getElementById('currentQuestion').textContent = `Question ${number} of ${total}`;
+            document.getElementById('questionNumber').textContent = `Question ${number} of ${total}`;
+            document.getElementById('questionText').textContent = q.q;
+
+            const progressPercent = (number / total) * 100;
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+
+            const grid = document.getElementById('answersGrid');
+            grid.innerHTML = '';
+
+            q.a.forEach((answer, index) => {
+                const btn = document.createElement('div');
+                btn.className = 'answer-btn';
+                btn.textContent = answer;
+                btn.onclick = () => selectAnswer(index);
+                grid.appendChild(btn);
+            });
+
+            document.getElementById('feedback').classList.remove('show', 'wrong');
+            document.getElementById('nextBtn').classList.remove('show');
+
+            updateScoreDashboard();
+        }
+
+        function selectAnswer(index) {
+            const q = currentState.questions[currentState.currentQuestion];
+            const buttons = document.querySelectorAll('.answer-btn');
+            const isCorrect = index === q.c;
+
+            buttons.forEach(btn => btn.classList.add('disabled'));
+
+            buttons[index].classList.add(isCorrect ? 'correct' : 'wrong');
+            if (!isCorrect) {
+                buttons[q.c].classList.add('correct');
+            }
+
+            const feedback = document.getElementById('feedback');
+            feedback.textContent = q.e;
+            feedback.classList.add('show');
+            if (!isCorrect) feedback.classList.add('wrong');
+
+            currentState.answers.push({ q: q.q, selected: q.a[index], correct: q.a[q.c], isCorrect });
+
+            if (isCorrect) {
+                currentState.score++;
+            }
+
+            document.getElementById('nextBtn').classList.add('show');
+            updateScoreDashboard();
+        }
+
+        function nextQuestion() {
+            currentState.currentQuestion++;
+
+            if (currentState.currentQuestion >= currentState.questions.length) {
+                showResults();
+            } else {
+                showQuestion();
+            }
+        }
+
+        function updateScoreDashboard() {
+            const total = currentState.questions.length;
+            const wrong = currentState.currentQuestion + 1 - currentState.score;
+            const percent = Math.round((currentState.score / (currentState.currentQuestion + 1)) * 100);
+
+            document.getElementById('correctCount').textContent = currentState.score;
+            document.getElementById('wrongCount').textContent = Math.max(0, wrong);
+            document.getElementById('currentScore').textContent = percent + '%';
+        }
+
+        function showResults() {
+            document.getElementById('quizContainer').classList.remove('active');
+            document.getElementById('resultsContainer').classList.add('active');
+
+            const total = currentState.questions.length;
+            const correct = currentState.score;
+            const wrong = total - correct;
+            const percent = Math.round((correct / total) * 100);
+
+            const rangeFinder = ratingRanges[currentState.level].find(r => percent >= r.min && percent <= r.max);
+            const rating = rangeFinder ? rangeFinder.label : "Unknown";
+
+            document.getElementById('resultsEmployee').textContent = currentState.employeeName;
+            document.getElementById('resultsDetails').textContent = `Level ${currentState.level} - Test ${currentState.level}${currentState.test} | ${currentState.storeLocation}`;
+
+            document.getElementById('finalScore').textContent = percent + '%';
+            document.getElementById('scoreCircle').style.setProperty('--score-deg', (percent / 100) * 360 + 'deg');
+
+            document.getElementById('totalQuestions').textContent = total;
+            document.getElementById('totalCorrect').textContent = correct;
+            document.getElementById('totalWrong').textContent = wrong;
+            document.getElementById('accuracy').textContent = percent + '%';
+
+            document.getElementById('ratingResult').textContent = rating;
+
+            localStorage.setItem('lastTestResult', JSON.stringify({
+                employee: currentState.employeeName,
+                level: currentState.level,
+                test: currentState.test,
+                store: currentState.storeLocation,
+                score: percent,
+                date: new Date().toLocaleDateString()
+            }));
+        }
+
+        function printResults() {
+            const managerNotes = document.getElementById('managerNotes').value;
+            if (managerNotes) {
+                const notesHtml = `<p><strong>Manager Notes:</strong> ${managerNotes.replace(/\n/g, '<br>')}</p>`;
+                const resultsBefore = document.getElementById('resultsContainer').innerHTML;
+                document.getElementById('resultsContainer').innerHTML = resultsBefore + notesHtml;
+            }
+            window.print();
+            if (managerNotes) {
+                location.reload();
+            }
+        }
+
+        function restart() {
+            currentState = {
+                level: null,
+                test: null,
+                employeeName: null,
+                storeLocation: null,
+                currentQuestion: 0,
+                score: 0,
+                questions: [],
+                answers: []
+            };
+
+            document.getElementById('resultsContainer').classList.remove('active');
+            document.getElementById('levelsView').style.display = 'grid';
+
+            document.getElementById('employeeName').value = '';
+            document.getElementById('storeLocation').value = '';
+            document.getElementById('managerPassword').value = '';
+            document.getElementById('managerNotes').value = '';
+        }
+
+        function backToLevels() {
+            document.getElementById('passwordModal').classList.remove('active');
+            document.getElementById('quizContainer').classList.remove('active');
+            document.getElementById('resultsContainer').classList.remove('active');
+            document.getElementById('levelsView').style.display = 'grid';
+
+            document.getElementById('employeeName').value = '';
+            document.getElementById('storeLocation').value = '';
+            document.getElementById('managerPassword').value = '';
+            document.getElementById('passwordError').style.display = 'none';
+        }
+
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && document.getElementById('passwordModal').classList.contains('active')) {
+                verifyPassword();
+            }
+        });
+    </script>
+</body>
+</html>
