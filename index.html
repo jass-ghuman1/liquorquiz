@@ -20,7 +20,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -44,6 +44,27 @@
             color: #999;
             text-transform: uppercase;
             letter-spacing: 2px;
+        }
+
+        .validation-error {
+            background: rgba(244, 67, 54, 0.15);
+            border: 2px solid #f44336;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            color: #ffcdd2;
+        }
+
+        .validation-error h2 {
+            color: #f44336;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .validation-error p {
+            font-size: 14px;
+            margin-bottom: 10px;
+            line-height: 1.6;
         }
 
         .levels-grid {
@@ -107,6 +128,16 @@
         .test-btn:hover {
             background: rgba(212, 175, 55, 0.3);
             transform: translateX(5px);
+        }
+
+        .test-btn.not-ready {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .test-btn.not-ready:hover {
+            background: rgba(212, 175, 55, 0.15);
+            transform: none;
         }
 
         .modal {
@@ -308,6 +339,14 @@
             line-height: 1.6;
         }
 
+        .question-category {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
         .answers-grid {
             display: grid;
             gap: 12px;
@@ -426,16 +465,20 @@
 
         .results-container {
             display: none;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid #d4af37;
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
             animation: fadeIn 0.5s ease;
         }
 
         .results-container.active {
             display: block;
+        }
+
+        .results-summary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
         }
 
         .results-header {
@@ -514,6 +557,38 @@
             color: #d4af37;
         }
 
+        .areas-to-improve {
+            background: rgba(255, 152, 0, 0.1);
+            border: 1px solid #ff9800;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .areas-title {
+            font-size: 14px;
+            color: #ff9800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .areas-list {
+            list-style: none;
+        }
+
+        .areas-list li {
+            font-size: 13px;
+            color: #ffffff;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 152, 0, 0.2);
+        }
+
+        .areas-list li:last-child {
+            border-bottom: none;
+        }
+
         .manager-notes {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(212, 175, 55, 0.5);
@@ -549,6 +624,145 @@
             outline: none;
             border-color: #d4af37;
             background: rgba(212, 175, 55, 0.1);
+        }
+
+        .review-section {
+            margin-top: 40px;
+        }
+
+        .review-header {
+            font-size: 20px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+
+        .review-filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn.active {
+            background: #d4af37;
+            color: #0f0f0f;
+        }
+
+        .filter-btn:hover {
+            background: rgba(212, 175, 55, 0.3);
+        }
+
+        .filter-btn.active:hover {
+            background: #e5c158;
+        }
+
+        .review-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .review-item.show {
+            display: block;
+        }
+
+        .review-item.correct-item {
+            border-left: 4px solid #4CAF50;
+        }
+
+        .review-item.wrong-item {
+            border-left: 4px solid #f44336;
+        }
+
+        .review-number {
+            font-size: 12px;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .review-status {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            margin-left: 10px;
+        }
+
+        .review-status.correct {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+
+        .review-status.wrong {
+            background: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+        }
+
+        .review-question {
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .review-category {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .answer-comparison {
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .answer-comparison-label {
+            color: #999;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .answer-comparison-text {
+            color: #ffffff;
+            padding-left: 12px;
+            border-left: 2px solid rgba(212, 175, 55, 0.5);
+        }
+
+        .review-explanation {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 6px;
+            padding: 12px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #ffffff;
+            line-height: 1.5;
         }
 
         .results-buttons {
@@ -679,16 +893,21 @@
             }
 
             .results-container {
-                border: none;
-                background: white;
+                display: block !important;
             }
 
             .results-header,
-            .rating-result {
+            .rating-result,
+            .review-header,
+            .areas-title {
                 color: #d4af37;
             }
 
             .btn-results {
+                display: none;
+            }
+
+            .review-filters {
                 display: none;
             }
         }
@@ -701,34 +920,36 @@
             <div class="subtitle">Employee Knowledge Test</div>
         </header>
 
+        <div id="validationWarning" style="display: none;"></div>
+
         <div id="levelsView" class="levels-grid">
-            <div class="level-card" onclick="selectLevel(1)">
+            <div class="level-card">
                 <div class="level-title">Level 1</div>
                 <div class="level-subtitle">Beginner</div>
                 <div class="test-options">
-                    <div class="test-btn">Test 1A</div>
-                    <div class="test-btn">Test 1B</div>
-                    <div class="test-btn">Test 1C</div>
+                    <div class="test-btn" onclick="selectTest(1, 'A')">Test 1A</div>
+                    <div class="test-btn not-ready" onclick="showNotReady(event)">Test 1B</div>
+                    <div class="test-btn not-ready" onclick="showNotReady(event)">Test 1C</div>
                 </div>
             </div>
 
-            <div class="level-card" onclick="selectLevel(2)">
+            <div class="level-card">
                 <div class="level-title">Level 2</div>
                 <div class="level-subtitle">Intermediate</div>
                 <div class="test-options">
-                    <div class="test-btn">Test 2A</div>
-                    <div class="test-btn">Test 2B</div>
-                    <div class="test-btn">Test 2C</div>
+                    <div class="test-btn not-ready" onclick="showNotReady(event)">Test 2A</div>
+                    <div class="test-btn not-ready" onclick="showNotReady(event)">Test 2B</div>
+                    <div class="test-btn not-ready" onclick="showNotReady(event)">Test 2C</div>
                 </div>
             </div>
 
-            <div class="level-card" onclick="selectLevel(3)">
+            <div class="level-card">
                 <div class="level-title">Level 3</div>
                 <div class="level-subtitle">Advanced</div>
                 <div class="test-options">
-                    <div class="test-btn">Test 3A</div>
-                    <div class="test-btn">Test 3B</div>
-                    <div class="test-btn">Test 3C</div>
+                    <div class="test-btn not-ready" onclick="showNotReady(event)">Test 3A</div>
+                    <div class="test-btn not-ready" onclick="showNotReady(event)">Test 3B</div>
+                    <div class="test-btn not-ready" onclick="showNotReady(event)">Test 3C</div>
                 </div>
             </div>
         </div>
@@ -772,7 +993,7 @@
             </div>
 
             <div class="progress-info">
-                <span id="currentQuestion">Question 1 of 20</span>
+                <span id="currentQuestion">Question 1 of 35</span>
                 <span id="currentLevel">Level 1 - Test 1A</span>
             </div>
 
@@ -789,6 +1010,7 @@
 
             <div class="question-box">
                 <div class="question-number" id="questionNumber"></div>
+                <div class="question-category" id="questionCategory"></div>
                 <div class="question-text" id="questionText"></div>
                 <div class="answers-grid" id="answersGrid"></div>
                 <div class="feedback" id="feedback"></div>
@@ -813,44 +1035,61 @@
         </div>
 
         <div id="resultsContainer" class="results-container">
-            <div class="results-header">Test Complete</div>
-            <div class="results-employee" id="resultsEmployee"></div>
-            <div class="results-details" id="resultsDetails"></div>
+            <div class="results-summary">
+                <div class="results-header">Test Complete</div>
+                <div class="results-employee" id="resultsEmployee"></div>
+                <div class="results-details" id="resultsDetails"></div>
 
-            <div class="circular-score">
-                <div class="score-circle" id="scoreCircle">
-                    <div class="score-percent" id="finalScore">0%</div>
-                    <div class="score-label-center">Final Score</div>
+                <div class="circular-score">
+                    <div class="score-circle" id="scoreCircle">
+                        <div class="score-percent" id="finalScore">0%</div>
+                        <div class="score-label-center">Final Score</div>
+                    </div>
                 </div>
-            </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 30px 0;">
-                <div class="score-item">
-                    <div class="score-label">Total Questions</div>
-                    <div class="score-value" id="totalQuestions">20</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 30px 0;">
+                    <div class="score-item">
+                        <div class="score-label">Total Questions</div>
+                        <div class="score-value" id="totalQuestions">35</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Correct Answers</div>
+                        <div class="score-value" id="totalCorrect">0</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Wrong Answers</div>
+                        <div class="score-value" id="totalWrong">0</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Accuracy</div>
+                        <div class="score-value" id="accuracy">0%</div>
+                    </div>
                 </div>
-                <div class="score-item">
-                    <div class="score-label">Correct Answers</div>
-                    <div class="score-value" id="totalCorrect">0</div>
-                </div>
-                <div class="score-item">
-                    <div class="score-label">Wrong Answers</div>
-                    <div class="score-value" id="totalWrong">0</div>
-                </div>
-                <div class="score-item">
-                    <div class="score-label">Accuracy</div>
-                    <div class="score-value" id="accuracy">0%</div>
-                </div>
-            </div>
 
-            <div class="rating-section">
-                <div class="rating-label">Performance Rating</div>
-                <div class="rating-result" id="ratingResult">-</div>
+                <div class="rating-section">
+                    <div class="rating-label">Performance Rating</div>
+                    <div class="rating-result" id="ratingResult">-</div>
+                </div>
+
+                <div id="areasToImprove" class="areas-to-improve" style="display: none;">
+                    <div class="areas-title">Areas to Improve</div>
+                    <ul class="areas-list" id="areasList"></ul>
+                </div>
             </div>
 
             <div class="manager-notes">
                 <div class="manager-notes-label">Manager Notes (Optional)</div>
                 <textarea id="managerNotes" placeholder="Add any feedback or notes about this test..."></textarea>
+            </div>
+
+            <div class="review-section">
+                <div class="review-header">Question-by-Question Review</div>
+                <div class="review-filters">
+                    <button class="filter-btn active" onclick="filterReview('all')">Show All</button>
+                    <button class="filter-btn" onclick="filterReview('correct')">✓ Correct Only</button>
+                    <button class="filter-btn" onclick="filterReview('wrong')">✗ Wrong Only</button>
+                </div>
+                <div id="reviewContainer"></div>
             </div>
 
             <div class="results-buttons">
@@ -864,90 +1103,6 @@
     <script>
         const MANAGER_PASSWORD = "4088568890";
 
-        let currentState = {
-            level: null,
-            test: null,
-            employeeName: null,
-            storeLocation: null,
-            currentQuestion: 0,
-            score: 0,
-            questions: [],
-            answers: []
-        };
-
-        const questionBanks = {
-            1: [
-                { q: "What is the primary grain used in beer production?", a: ["Barley", "Wheat", "Corn", "Rice"], c: 0, e: "Barley is the most commonly used grain in beer." },
-                { q: "How many standard sizes does a wine bottle typically come in?", a: ["2", "4", "6", "8"], c: 2, e: "Standard wine bottles include 750ml and 1.5L sizes." },
-                { q: "Which spirit is primarily made from agave?", a: ["Whisky", "Tequila", "Rum", "Vodka"], c: 1, e: "Tequila is distilled from the blue agave plant, native to Mexico." },
-                { q: "What is the typical ABV (Alcohol By Volume) range for beer?", a: ["2-5%", "5-8%", "10-15%", "15-20%"], c: 0, e: "Most beers range from 4-6% ABV, though craft beers can vary." },
-                { q: "Which wine grape is known for producing red wines?", a: ["Chardonnay", "Sauvignon Blanc", "Cabernet Sauvignon", "Riesling"], c: 2, e: "Cabernet Sauvignon is a classic red wine grape." },
-                { q: "What does 'dry' mean when describing a wine?", a: ["Low alcohol content", "Low residual sugar", "High acidity", "Strong tannins"], c: 1, e: "A dry wine has little to no residual sugar remaining after fermentation." },
-                { q: "Which of these is NOT a type of beer style?", a: ["Lager", "Ale", "Stout", "Cognac"], c: 3, e: "Cognac is a brandy, not a beer style." },
-                { q: "What is the standard size of a shot glass in Alberta?", a: ["30 ml", "45 ml", "60 ml", "75 ml"], c: 0, e: "A standard shot glass in Canada is 30ml." },
-                { q: "Which country is known for producing Champagne?", a: ["Italy", "Spain", "France", "Germany"], c: 2, e: "Champagne is produced exclusively in the Champagne region of France." },
-                { q: "What percentage of alcohol makes spirits different from other drinks?", a: ["Above 15%", "Above 20%", "Above 30%", "Above 40%"], c: 2, e: "Spirits typically contain 40% ABV or higher." },
-                { q: "Which of these is a fortified wine?", a: ["Pinot Noir", "Sherry", "Sauvignon Blanc", "Riesling"], c: 1, e: "Sherry is a fortified wine from Spain." },
-                { q: "What does 'malted' mean in beer production?", a: ["Filtered", "Aged in oak", "Grain treated to convert starches to sugars", "Mixed with water"], c: 2, e: "Malting is a process where grain is soaked and dried to develop fermentable sugars." },
-                { q: "Which spirit is distilled from fermented fruit juices?", a: ["Rum", "Brandy", "Gin", "Vodka"], c: 1, e: "Brandy is made from distilled wine or fermented fruit juice." },
-                { q: "What is the legal drinking age in Alberta?", a: ["18", "19", "20", "21"], c: 1, e: "The legal drinking age in Alberta is 19 years old." },
-                { q: "What does a sommelier primarily do?", a: ["Brew beer", "Select and recommend wines", "Distill spirits", "Manage vineyards"], c: 1, e: "A sommelier is a wine expert who helps customers select wines." },
-                { q: "Which glass type is typically used for red wine?", a: ["Flute", "Highball", "Balloon/Tulip", "Shot glass"], c: 2, e: "Red wine is traditionally served in larger, rounder glasses to aerate the wine." },
-                { q: "What is the main ingredient in vodka?", a: ["Grapes", "Grains or potatoes", "Sugar cane", "Agave"], c: 1, e: "Vodka can be distilled from grains, potatoes, or other starches." },
-                { q: "What region is famous for Scotch whisky?", a: ["England", "Ireland", "Scotland", "Wales"], c: 2, e: "Scotch whisky can only be produced in Scotland." },
-                { q: "What does 'proof' measure on a liquor bottle?", a: ["Quality", "Alcohol content", "Age", "Purity"], c: 1, e: "Proof is twice the alcohol by volume percentage." },
-                { q: "Which is NOT an ingredient commonly found in gin?", a: ["Juniper berries", "Botanicals", "Hops", "Grains"], c: 2, e: "Hops are used in beer, not gin. Gin primarily uses juniper and botanicals." }
-            ],
-            2: [
-                { q: "What is the difference between a Pilsner and a Lager?", a: ["Lagers are always darker", "Pilsner is a type of lager", "They have different alcohol content", "Lagers use ale yeast"], c: 1, e: "Pilsner is a specific style of lager, known for its crisp, golden character." },
-                { q: "Describe the primary characteristics of a wine with high tannins.", a: ["Sweet and fruity", "Dry, astringent mouthfeel", "Light and delicate", "Full of acidity"], c: 1, e: "Tannins create a drying sensation in the mouth and are common in red wines." },
-                { q: "What is the primary difference between Tequila and Mezcal?", a: ["Tequila is stronger", "Mezcal uses different agave plant", "Tequila is from a specific region", "No significant difference"], c: 2, e: "Tequila must come from the Tequila region of Mexico and use blue agave specifically." },
-                { q: "Which beer style is characterized by high bitterness from hops?", a: ["Stout", "Blonde Ale", "IPA (India Pale Ale)", "Wheat Beer"], c: 2, e: "IPAs are known for their bold, hoppy, and bitter flavor profile." },
-                { q: "What does 'Old World' wine typically refer to?", a: ["Aged wines over 20 years", "Wines from Europe", "Expensive wines", "Organic wines"], c: 1, e: "Old World refers to wines from traditional wine-producing regions in Europe." },
-                { q: "What type of yeast is used in ale production?", a: ["Bottom-fermenting", "Top-fermenting", "Wild yeast", "Neutral yeast"], c: 1, e: "Ales use top-fermenting yeast, which produces fuller, fruitier flavors." },
-                { q: "Which bourbon must be aged in new charred oak barrels?", a: ["All bourbon", "Small batch bourbon", "Single barrel bourbon", "No such requirement"], c: 0, e: "All authentic bourbon must be aged in new charred oak barrels by law." },
-                { q: "What is the primary flavor component in Champagne called?", a: ["Tannins", "Acidity", "Umami", "Astringency"], c: 1, e: "Champagne's signature character comes from its high acidity and effervescence." },
-                { q: "How should you approach upselling alcohol responsibly?", a: ["Always suggest premium brands", "Suggest based on customer preference, not pressure", "Push higher-priced items", "Let customer decide without input"], c: 1, e: "Responsible upselling focuses on customer satisfaction and genuine recommendations." },
-                { q: "What does 'body' mean when describing wine?", a: ["The color intensity", "The weight and mouthfeel", "The alcohol percentage", "The food pairing"], c: 1, e: "Body refers to the fullness or lightness of the wine in your mouth." },
-                { q: "Which wine region is famous for Riesling?", a: ["Bordeaux", "Alsace", "Tuscany", "Napa"], c: 1, e: "Alsace in France is renowned for high-quality Riesling wines." },
-                { q: "What is the key difference between Prosecco and Champagne?", a: ["Prosecco is from Italy", "Different production methods", "Prosecco is more affordable", "All of the above"], c: 2, e: "While Prosecco is Italian and cheaper, the main difference is the production method." },
-                { q: "How do you properly recommend a substitute product?", a: ["Never suggest alternatives", "Suggest based on customer budget and taste", "Always recommend more expensive items", "Match flavor profile and price point"], c: 3, e: "Good substitutions match the customer's original selection in taste and value." },
-                { q: "What's the difference between Cognac and Brandy?", a: ["Cognac is stronger", "Cognac is from Cognac region of France", "Brandy is less refined", "No real difference"], c: 1, e: "Cognac must be produced in the Cognac region; all Cognac is brandy, but not all brandy is Cognac." },
-                { q: "What grape produces most white wines in Bordeaux?", a: ["Sauvignon Blanc", "Semillon", "Chardonnay", "Pinot Grigio"], c: 0, e: "Sauvignon Blanc is the primary white grape in Bordeaux production." },
-                { q: "What is an IBU in beer terminology?", a: ["International Beer Unit", "India Beer Ultimate", "International Bitterness Unit", "Ingredient Balance Unit"], c: 2, e: "IBU measures bitterness from hops in beer." },
-                { q: "How do you identify a customer who should NOT be served alcohol?", a: ["Young appearance", "Signs of intoxication", "Demanding attitude", "Late hour"], c: 1, e: "Never serve anyone showing signs of intoxication, regardless of other factors." },
-                { q: "What is the proper temperature range for serving white wine?", a: ["Room temperature", "45-50°F", "32-35°F", "55-60°F"], c: 1, e: "Most white wines are best served chilled between 45-50°F." },
-                { q: "Which spirit has specific production rules defining it as 'bourbon'?", a: ["Vodka", "Bourbon", "Gin", "Rum"], c: 1, e: "Bourbon must be made in the USA and meet strict aging and content requirements." },
-                { q: "What's the primary role of the head bartender in responsible service?", a: ["Make strongest drinks", "Ensure customer safety and proper ID checks", "Increase sales only", "Accept any order without question"], c: 1, e: "Responsible service prioritizes customer safety and legal compliance." }
-            ],
-            3: [
-                { q: "Name the 5 main regions of Scotland known for Scotch whisky production.", a: ["Highlands, Speyside, Islay, Campbeltown, Lowlands", "North, South, East, West, Central", "Highland, Valley, Island, Coast, Inland", "Major, Minor, Premium, Classic, Rare"], c: 0, e: "These five regions each produce distinct Scotch styles." },
-                { q: "What are the strict legal requirements for bourbon production in the USA?", a: ["Any whiskey aged 2+ years", "Minimum 51% corn mash, new charred oak barrels, 80+ proof", "Produced in Kentucky only", "Minimum 10 years aging"], c: 1, e: "Federal law defines bourbon's strict composition, barrel, and proof requirements." },
-                { q: "Explain the difference between Old World and New World wine production philosophies.", a: ["Old World is better quality", "Old World emphasizes terroir; New World emphasizes fruit and oak", "No significant difference", "Old World uses younger vines"], c: 1, e: "Old World focuses on expressing place (terroir); New World focuses on ripe fruits and winemaking techniques." },
-                { q: "What is the Champagne method (Méthode Champenoise)?", a: ["Mechanical bottling", "Second fermentation in the bottle", "Long barrel aging", "High pressure fermentation"], c: 1, e: "The traditional method involves secondary fermentation directly in sealed bottles." },
-                { q: "How do you distinguish Champagne from Prosecco and Cava?", a: ["All are identical", "Champagne uses Méthode Champenoise; Prosecco and Cava use different methods", "Cava is stronger", "Prosecco is from Spain"], c: 1, e: "The production method, region, and grape varieties differentiate these sparkling wines." },
-                { q: "What are the key characteristics of a complex Scotch from Islay?", a: ["Light and floral", "Smoky, peaty, maritime influence", "Sweet and fruity", "Light with vanilla notes"], c: 1, e: "Islay Scotches are known for robust peat smoke and coastal character." },
-                { q: "Describe the difference between fermentation and aging in wine.", a: ["Same process", "Fermentation converts sugar to alcohol; aging develops flavor", "Fermentation develops flavor only", "Aging happens in bottles only"], c: 1, e: "Fermentation creates alcohol; aging in barrels and bottles develops complexity." },
-                { q: "What is the significance of terroir in wine quality?", a: ["Marketing term only", "Climate, soil, and geography create unique characteristics", "Only matters for expensive wines", "Determines alcohol content"], c: 1, e: "Terroir encompasses all environmental factors that influence grape characteristics." },
-                { q: "Handle this scenario: A customer appears intoxicated but insists they need 'just one more drink'.", a: ["Serve them anyway", "Politely refuse and offer water/food", "Serve if they promise to leave soon", "Check with manager only"], c: 1, e: "Always refuse service to intoxicated customers, regardless of their requests." },
-                { q: "What customer profile should never be served alcohol, and why?", a: ["Anyone over 21/19", "Anyone under legal age, anyone intoxicated, anyone you suspect is pregnant", "Only first-time customers", "Only tourists"], c: 1, e: "Legal and health requirements make these groups ineligible for service." },
-                { q: "Explain the concept of 'oaking' in wine and spirit production.", a: ["Removing impurities", "Aging in oak to add vanilla, spice, and depth", "A fermentation method", "A filtration process"], c: 1, e: "Oak barrels impart flavors, color, and tannins to wine and spirits." },
-                { q: "What are the differences between single-barrel and small-batch bourbon?", a: ["No difference", "Single-barrel = one barrel; small-batch = limited barrels blended together", "Small-batch is always superior", "Single-barrel is always premium"], c: 1, e: "Single-barrel is from one barrel; small-batch blends multiple barrels for consistency." },
-                { q: "How do you approach a customer requesting a pairing recommendation for a specific dish?", a: ["Never recommend without asking", "Ask about dish, prep, sauce; recommend by flavor profile match", "Always suggest expensive wine", "Suggest red for all meals"], c: 1, e: "Thoughtful pairing requires understanding the dish's components." },
-                { q: "What role do hops, malt, and yeast play in craft beer differentiation?", a: ["No significant role", "Each influences aroma, flavor, body, and finish distinctly", "Only hops matter", "Only malt matters"], c: 1, e: "These three components are the primary levers for craft beer style variation." },
-                { q: "Describe a customer scenario where you must refuse service and the appropriate response.", a: ["Never refuse a sale", "Customer shows ID signs (pupils, speech, balance issues); politely explain and offer alternatives", "Only refuse if they argue", "Only refuse if rude"], c: 1, e: "Responsible service means refusing sales when customer safety is at risk." },
-                { q: "What is the significance of yeast strain selection in brewing?", a: ["Minimal impact", "Defines fermentation temperature, flavor compounds, and body", "Only for expensive craft beer", "Interchangeable between beers"], c: 1, e: "Different yeast strains produce vastly different flavor and aroma profiles." },
-                { q: "Explain the concept of 'finish' in wine and spirit tasting.", a: ["The color of the drink", "Lingering flavors after swallowing", "The alcohol burn", "The bottle closure"], c: 1, e: "Finish refers to the aftertaste and how flavors evolve after drinking." },
-                { q: "How do you manage inventory awareness for premium products?", a: ["Ignore inventory", "Track stock, identify slow movers, suggest faster movers", "Push all premium items equally", "Only count at year-end"], c: 1, e: "Smart inventory management improves sales and customer recommendations." },
-                { q: "What's the difference between a 'dry' beer and 'dry' wine?", a: ["Same meaning", "Wine: low sugar; beer: crisp, clean finish", "Opposite meanings", "Beer has no dry option"], c: 1, e: "Dry wine has low residual sugar; dry beer has a crisp, clean flavor." },
-                { q: "Describe how to recommend premium spirits to a budget-conscious customer responsibly.", a: ["Don't recommend premium", "Understand budget, suggest premium at price point, highlight value", "Push highest price only", "Only sell bottom shelf"], c: 1, e: "Good recommendations balance customer budget with quality and value perception." },
-                { q: "What is the legal responsibility of a liquor store employee regarding underage service?", a: ["Not responsible", "Verify ID and refuse service if underage; documentation protects store", "Only manager is responsible", "Use judgment on appearance only"], c: 1, e: "Employees bear legal responsibility for checking ID and refusing underage sales." },
-                { q: "Explain the impact of malting process variations on beer flavor.", a: ["No impact", "Different roasts create flavors from light/crisp to dark/roasty", "All malts taste identical", "Only affects color"], c: 1, e: "Malt roasting levels directly influence beer color, body, and flavor complexity." },
-                { q: "How do you handle a customer who disputes a high-value bottle's authenticity?", a: ["Dismiss their concern", "Listen, verify with manager, check provenance if possible", "Insist bottle is genuine", "Offer discount to appease"], c: 1, e: "Professional handling protects store reputation and customer trust." },
-                { q: "What is the relationship between acidity and aging potential in wine?", a: ["No relationship", "Higher acidity generally enables longer aging potential", "High acidity shortens shelf life", "Only affects taste"], c: 1, e: "Acidity preserves wines and allows them to age gracefully." }
-            ]
-        };
-
         const ratingRanges = {
             1: [
                 { min: 0, max: 59, label: "Needs Basic Training" },
@@ -958,20 +1113,143 @@
             2: [
                 { min: 0, max: 59, label: "Needs Product Training" },
                 { min: 60, max: 74, label: "Fair Store Knowledge" },
-                { min: 75, max: 89, label: "Strong Sales Floor Knowledge" },
+                { min: 75, max: 89, label: "Strong Store Knowledge" },
                 { min: 90, max: 100, label: "Ready for Senior Shift Duties" }
             ],
             3: [
                 { min: 0, max: 59, label: "Needs Advanced Training" },
                 { min: 60, max: 74, label: "Good But Needs Practice" },
                 { min: 75, max: 89, label: "Supervisor Ready" },
-                { min: 90, max: 100, label: "Product Specialist / Manager Level" }
+                { min: 90, max: 100, label: "Manager Level" }
             ]
         };
 
-        function selectLevel(level) {
+        const quizzes = {
+            level1: {
+                test1A: [
+                    { question: "What is the first step in checking a customer's ID before selling alcohol?", options: ["Assume their age if they look old enough", "Ask for a valid photo ID and check it carefully", "Check their driver's license only", "Trust their word if they seem trustworthy"], correctAnswer: "Ask for a valid photo ID and check it carefully", explanation: "Always request valid photo ID without assumptions based on appearance.", category: "ID Checking" },
+                    { question: "Which of these is NOT a valid form of ID for alcohol purchases in Alberta?", options: ["Alberta Driver's License", "Passport", "Expired ID from 5 years ago", "Provincial Photo ID"], correctAnswer: "Expired ID from 5 years ago", explanation: "ID must be current and valid. Expired ID is not acceptable for alcohol sales.", category: "ID Checking" },
+                    { question: "What should an employee do if a customer appears to be intoxicated at the time of purchase?", options: ["Refuse the sale and do not serve them", "Sell to them anyway if they promise to be careful", "Suggest they come back later", "Call their family instead"], correctAnswer: "Refuse the sale and do not serve them", explanation: "Serving alcohol to someone already intoxicated is illegal and dangerous.", category: "Intoxication Concerns" },
+                    { question: "An employee notices a customer browsing spirits but also sees the customer stumbling and slurring words. What should happen next?", options: ["Complete the sale quickly", "Politely refuse the sale and offer non-alcoholic alternatives", "Ask them to leave the store", "Ignore the signs and continue serving"], correctAnswer: "Politely refuse the sale and offer non-alcoholic alternatives", explanation: "Signs of intoxication require refusal of service for safety reasons.", category: "Intoxication Concerns" },
+                    { question: "What is the legal age to purchase alcohol in Alberta?", options: ["16", "17", "18", "19"], correctAnswer: "19", explanation: "The legal drinking and purchasing age in Alberta is 19 years old.", category: "Age Verification" },
+                    { question: "If a customer says 'My friend is of legal age, so I can buy for both of us,' what should the employee do?", options: ["Allow the purchase since one is of age", "Refuse the sale if you suspect they are buying for a minor", "Ask the other person to come to the counter", "Sell the alcohol but warn them"], correctAnswer: "Refuse the sale if you suspect they are buying for a minor", explanation: "Selling alcohol to someone who will provide it to a minor is illegal.", category: "Proxy Sales" },
+                    { question: "What does 'responsible retail' mean?", options: ["Selling as much as possible", "Balancing customer service with safety and legal compliance", "Refusing all customers", "Only selling to people over 25"], correctAnswer: "Balancing customer service with safety and legal compliance", explanation: "Responsible retail involves serving customers while upholding laws and safety standards.", category: "Responsible Retail" },
+                    { question: "A customer wants to buy a large quantity of alcohol. Should the employee:", options: ["Refuse all large purchases", "Question them about the intended use if it seems unusual", "Just process the sale without comment", "Call the police"], correctAnswer: "Question them about the intended use if it seems unusual", explanation: "Unusual quantities may indicate resale or service to minors and should be addressed.", category: "Responsible Retail" },
+                    { question: "Which situation requires a manager's immediate attention?", options: ["A customer is upset about the price", "A customer's ID appears forged or altered", "A customer wants to return a product", "A customer is browsing slowly"], correctAnswer: "A customer's ID appears forged or altered", explanation: "Suspicious ID should be escalated to management immediately.", category: "Manager Escalation" },
+                    { question: "What should an employee do if unsure whether to complete a sale?", options: ["Guess and go ahead", "Ask the customer for advice", "Pause the sale and consult a manager", "Complete it anyway to avoid awkwardness"], correctAnswer: "Pause the sale and consult a manager", explanation: "When in doubt, always seek manager guidance before completing the sale.", category: "Manager Escalation" },
+                    { question: "A customer is being loud and aggressive. How should the employee respond?", options: ["Match their tone and yell back", "Stay calm and professional; escalate to manager if needed", "Ask them to leave immediately", "Ignore them"], correctAnswer: "Stay calm and professional; escalate to manager if needed", explanation: "De-escalation through calm behavior is key to managing difficult situations.", category: "Customer Safety" },
+                    { question: "What should be done if there is broken glass on the store floor?", options: ["Leave it until closing", "Clean it up right away or block the area and get help", "Sweep it under a shelf", "Ask customers to avoid it"], correctAnswer: "Clean it up right away or block the area and get help", explanation: "Broken glass is a hazard and must be addressed immediately.", category: "Store Safety" },
+                    { question: "A customer leaves their wallet at the store. What should the employee do?", options: ["Look through it for personal details", "Secure it according to store procedure and notify a manager", "Take it home for safekeeping", "Give it to the next customer who knows them"], correctAnswer: "Secure it according to store procedure and notify a manager", explanation: "Lost property should be secured and handled through management or store procedure.", category: "Lost Property" },
+                    { question: "What is the correct approach when a customer is upset about a refused sale?", options: ["Argue loudly to prove the employee is right", "Stay calm, repeat the decision briefly, and involve a manager if needed", "Mock the customer", "Complete the sale to avoid conflict"], correctAnswer: "Stay calm, repeat the decision briefly, and involve a manager if needed", explanation: "Safety and compliance are more important than avoiding a difficult conversation.", category: "Refusal of Service" },
+                    { question: "What should the employee do if they are unsure whether to complete a sale?", options: ["Guess and complete it", "Ask the customer what they think", "Pause the sale and ask a manager", "Let the customer decide"], correctAnswer: "Pause the sale and ask a manager", explanation: "When unsure, employees should slow down and get manager guidance.", category: "Manager Escalation" },
+                    { question: "Which is a sign that a customer may need manager attention?", options: ["They ask for a receipt", "They browse quietly", "They slur speech, stumble, or act confused", "They compare prices"], correctAnswer: "They slur speech, stumble, or act confused", explanation: "Slurred speech, stumbling, or confusion may indicate intoxication or safety concerns.", category: "Intoxication Concerns" },
+                    { question: "A customer asks an employee to ignore ID requirements because they are in a hurry. What should the employee do?", options: ["Make an exception", "Follow ID policy and refuse if valid ID is not provided", "Ask them to pay cash", "Let them come behind the counter"], correctAnswer: "Follow ID policy and refuse if valid ID is not provided", explanation: "Being in a hurry does not change ID or responsible-retail requirements.", category: "ID Checking" },
+                    { question: "What should employees avoid during customer conflicts?", options: ["Calm tone", "Short explanation", "Insults, threats, or physical confrontation", "Calling a manager"], correctAnswer: "Insults, threats, or physical confrontation", explanation: "Employees should de-escalate, not make the situation worse.", category: "Customer Safety" },
+                    { question: "Which action supports safe closing procedures?", options: ["Leaving the door unlocked after closing", "Counting cash with the door open", "Following the store closing checklist", "Letting unknown people inside after hours"], correctAnswer: "Following the store closing checklist", explanation: "A closing checklist helps protect employees, cash, inventory, and the premises.", category: "Closing Duties" },
+                    { question: "What should an employee do if the till is short or over at the end of shift?", options: ["Hide the difference", "Use their own cash to adjust it without telling anyone", "Report it according to store procedure", "Blame the previous shift without checking"], correctAnswer: "Report it according to store procedure", explanation: "Cash differences should be documented and reported honestly.", category: "Cash Handling" },
+                    { question: "Which is the safest response to a suspected robbery?", options: ["Fight the person", "Protect employee safety and follow emergency procedure", "Chase the person outside", "Lock customers inside"], correctAnswer: "Protect employee safety and follow emergency procedure", explanation: "Human safety is the priority in robbery or threat situations.", category: "Emergency Safety" },
+                    { question: "A customer asks for another customer's phone number from a special order form. What should the employee do?", options: ["Provide it if they seem friendly", "Refuse and protect the customer's privacy", "Write it down quietly", "Post it near the till"], correctAnswer: "Refuse and protect the customer's privacy", explanation: "Customer personal information must not be shared with other customers.", category: "Privacy" },
+                    { question: "What should be done with broken glass or spilled liquid in the store?", options: ["Leave it until closing", "Clean it safely right away or block the area and get help", "Kick it under the shelf", "Ask customers to walk around it"], correctAnswer: "Clean it safely right away or block the area and get help", explanation: "Spills and broken glass are safety hazards and should be handled quickly.", category: "Store Safety" },
+                    { question: "A customer wants to return a product but is angry and loud. What should the employee do first?", options: ["Match their volume", "Stay calm and follow the store return/complaint procedure", "Throw the product away", "Ignore them"], correctAnswer: "Stay calm and follow the store return/complaint procedure", explanation: "Complaints should be handled professionally and according to store policy.", category: "Customer Complaints" },
+                    { question: "Why should employees avoid making exceptions for friends or family?", options: ["It slows down the till", "It can create compliance, fairness, and accountability problems", "It makes the store too busy", "It improves customer service too much"], correctAnswer: "It can create compliance, fairness, and accountability problems", explanation: "Rules should be applied consistently, even when the customer is known personally.", category: "Professional Conduct" },
+                    { question: "What should an employee do before leaving the till unattended?", options: ["Leave cash drawer open", "Make sure cash and access are secured according to store procedure", "Ask a customer to watch it", "Leave login active for the next person"], correctAnswer: "Make sure cash and access are secured according to store procedure", explanation: "The till should be protected from unauthorized access.", category: "Cash Handling" },
+                    { question: "Which behavior is most appropriate on the sales floor?", options: ["Discussing private customer issues loudly", "Using respectful language and staying aware of customers", "Ignoring customers until they complain", "Arguing with coworkers in front of customers"], correctAnswer: "Using respectful language and staying aware of customers", explanation: "Professional behavior supports customer service and store safety.", category: "Professional Conduct" },
+                    { question: "What should an employee do if a customer is trying to pressure them into breaking store rules?", options: ["Break the rule once to avoid conflict", "Stay firm, follow policy, and call a manager if needed", "Let the customer go behind the counter", "Offer them a secret discount"], correctAnswer: "Stay firm, follow policy, and call a manager if needed", explanation: "Employees should not break rules under pressure. Manager support should be used when needed.", category: "Manager Escalation" },
+                    { question: "Which answer best describes responsible retail service?", options: ["Sell as much as possible to every customer", "Balance customer service with safety, ID checks, and compliance", "Avoid all customer questions", "Only focus on speed"], correctAnswer: "Balance customer service with safety, ID checks, and compliance", explanation: "Responsible retail means serving customers professionally while following safety and compliance rules.", category: "Responsible Retail" },
+                    { question: "What should be done if an employee accidentally completes a questionable sale?", options: ["Hide it and say nothing", "Tell a manager immediately and document it if required", "Delete the transaction record", "Blame another employee"], correctAnswer: "Tell a manager immediately and document it if required", explanation: "Mistakes should be reported quickly so management can respond properly.", category: "Incident Reporting" },
+                    { question: "Why is training documentation important?", options: ["It proves employees never make mistakes", "It helps show employees were trained on store expectations and procedures", "It replaces all manager supervision", "It is only useful for decoration"], correctAnswer: "It helps show employees were trained on store expectations and procedures", explanation: "Training records help the business track staff readiness and accountability.", category: "Training Records" },
+                    { question: "A teenage customer tries to buy alcohol with a fake ID. What should the employee do?", options: ["Sell anyway because the ID looks official", "Politely refuse and inform them it is against the law", "Ask a friend to verify them", "Sell it at a discount"], correctAnswer: "Politely refuse and inform them it is against the law", explanation: "Fake ID should be refused immediately and may need to be reported to management.", category: "ID Checking" },
+                    { question: "What is the main purpose of checking ID at the point of sale?", options: ["To be annoying", "To verify the customer is of legal age", "To collect customer data", "To slow down service"], correctAnswer: "To verify the customer is of legal age", explanation: "ID checks are a legal requirement to prevent sales to minors.", category: "ID Checking" },
+                    { question: "If a customer becomes abusive toward an employee, what should happen?", options: ["The employee should retaliate", "The manager should be called and the situation de-escalated", "The police should always be called first", "The employee should ignore it"], correctAnswer: "The manager should be called and the situation de-escalated", explanation: "Management should handle abusive situations to protect employees and customers.", category: "Customer Safety" },
+                    { question: "What is the first action if an employee suspects a customer may be buying alcohol for a minor?", options: ["Complete the sale anyway", "Refuse the sale and alert management", "Call the police immediately", "Ask the customer why they want to know"], correctAnswer: "Refuse the sale and alert management", explanation: "Suspected proxy purchases must be refused and reported to management.", category: "Proxy Sales" }
+                ],
+                test1B: [],
+                test1C: []
+            },
+            level2: {
+                test2A: [],
+                test2B: [],
+                test2C: []
+            },
+            level3: {
+                test3A: [],
+                test3B: [],
+                test3C: []
+            }
+        };
+
+        let currentState = {
+            level: null,
+            test: null,
+            employeeName: null,
+            storeLocation: null,
+            currentQuestion: 0,
+            score: 0,
+            questions: [],
+            userAnswers: []
+        };
+
+        function validateQuestionBank() {
+            const errors = [];
+
+            Object.keys(quizzes).forEach(levelKey => {
+                const level = levelKey.replace('level', '');
+                const levelQuizzes = quizzes[levelKey];
+
+                Object.keys(levelQuizzes).forEach(testKey => {
+                    const questions = levelQuizzes[testKey];
+                    if (questions.length > 0 && questions.length !== 35) {
+                        errors.push(`Level ${level} ${testKey.toUpperCase()}: Expected 35 questions, found ${questions.length}.`);
+                    }
+
+                    questions.forEach((q, idx) => {
+                        const qNum = idx + 1;
+                        if (!q.question || q.question.trim() === '') errors.push(`Level ${level} ${testKey.toUpperCase()} Q${qNum}: Missing question text.`);
+                        if (!q.options || q.options.length !== 4) errors.push(`Level ${level} ${testKey.toUpperCase()} Q${qNum}: Must have exactly 4 options.`);
+                        if (!q.correctAnswer || q.correctAnswer.trim() === '') errors.push(`Level ${level} ${testKey.toUpperCase()} Q${qNum}: Missing correct answer.`);
+                        if (!q.explanation || q.explanation.trim() === '') errors.push(`Level ${level} ${testKey.toUpperCase()} Q${qNum}: Missing explanation.`);
+                        if (!q.category || q.category.trim() === '') errors.push(`Level ${level} ${testKey.toUpperCase()} Q${qNum}: Missing category.`);
+
+                        if (q.options && !q.options.includes(q.correctAnswer)) {
+                            errors.push(`Level ${level} ${testKey.toUpperCase()} Q${qNum}: Correct answer does not match any option.`);
+                        }
+
+                        if (q.options && new Set(q.options).size !== q.options.length) {
+                            errors.push(`Level ${level} ${testKey.toUpperCase()} Q${qNum}: Duplicate options detected.`);
+                        }
+                    });
+
+                    const questionTexts = questions.map(q => q.question);
+                    if (new Set(questionTexts).size !== questionTexts.length) {
+                        errors.push(`Level ${level} ${testKey.toUpperCase()}: Duplicate questions detected.`);
+                    }
+                });
+            });
+
+            if (errors.length > 0) {
+                const warningHtml = `
+                    <div class="validation-error">
+                        <h2>⚠️ Validation Errors</h2>
+                        ${errors.map(e => `<p>• ${e}</p>`).join('')}
+                        <p style="margin-top: 15px; font-weight: 600;">These tests cannot start until errors are resolved.</p>
+                    </div>
+                `;
+                document.getElementById('validationWarning').innerHTML = warningHtml;
+                document.getElementById('validationWarning').style.display = 'block';
+                return false;
+            }
+
+            return true;
+        }
+
+        function showNotReady(e) {
+            e.stopPropagation();
+            alert("This test is not ready. Approved question bank is incomplete.");
+        }
+
+        function selectTest(level, testChar) {
             currentState.level = level;
-            currentState.test = String.fromCharCode(65 + Math.floor(Math.random() * 3));
+            currentState.test = testChar;
             document.getElementById('passwordModal').classList.add('active');
         }
 
@@ -994,8 +1272,12 @@
             }
 
             if (password !== MANAGER_PASSWORD) {
-                errorEl.textContent = "Incorrect password. Please ask manager.";
+                errorEl.textContent = "Incorrect password. Please ask a manager to start the test.";
                 errorEl.style.display = "block";
+                return;
+            }
+
+            if (!validateQuestionBank()) {
                 return;
             }
 
@@ -1009,14 +1291,14 @@
         function startQuiz() {
             document.getElementById('passwordModal').classList.remove('active');
 
-            const bank = questionBanks[currentState.level];
-            const questionCount = currentState.level === 1 ? 15 : (currentState.level === 2 ? 20 : 25);
-            const shuffled = bank.sort(() => 0.5 - Math.random()).slice(0, questionCount);
+            const levelKey = `level${currentState.level}`;
+            const testKey = `test${currentState.level}${currentState.test}`;
+            const questions = quizzes[levelKey][testKey];
 
-            currentState.questions = shuffled;
+            currentState.questions = [...questions];
             currentState.currentQuestion = 0;
             currentState.score = 0;
-            currentState.answers = [];
+            currentState.userAnswers = [];
 
             document.getElementById('levelsView').style.display = 'none';
             document.getElementById('quizContainer').classList.add('active');
@@ -1034,8 +1316,9 @@
             const number = currentState.currentQuestion + 1;
 
             document.getElementById('currentQuestion').textContent = `Question ${number} of ${total}`;
-            document.getElementById('questionNumber').textContent = `Question ${number} of ${total}`;
-            document.getElementById('questionText').textContent = q.q;
+            document.getElementById('questionNumber').textContent = `Question ${number}`;
+            document.getElementById('questionCategory').textContent = `Category: ${q.category}`;
+            document.getElementById('questionText').textContent = q.question;
 
             const progressPercent = (number / total) * 100;
             document.getElementById('progressFill').style.width = progressPercent + '%';
@@ -1043,7 +1326,7 @@
             const grid = document.getElementById('answersGrid');
             grid.innerHTML = '';
 
-            q.a.forEach((answer, index) => {
+            q.options.forEach((answer, index) => {
                 const btn = document.createElement('div');
                 btn.className = 'answer-btn';
                 btn.textContent = answer;
@@ -1060,21 +1343,33 @@
         function selectAnswer(index) {
             const q = currentState.questions[currentState.currentQuestion];
             const buttons = document.querySelectorAll('.answer-btn');
-            const isCorrect = index === q.c;
+            const selectedAnswer = buttons[index].textContent;
+            const isCorrect = selectedAnswer === q.correctAnswer;
 
             buttons.forEach(btn => btn.classList.add('disabled'));
 
             buttons[index].classList.add(isCorrect ? 'correct' : 'wrong');
             if (!isCorrect) {
-                buttons[q.c].classList.add('correct');
+                const correctIndex = q.options.indexOf(q.correctAnswer);
+                if (correctIndex !== -1) {
+                    buttons[correctIndex].classList.add('correct');
+                }
             }
 
             const feedback = document.getElementById('feedback');
-            feedback.textContent = q.e;
+            feedback.textContent = q.explanation;
             feedback.classList.add('show');
             if (!isCorrect) feedback.classList.add('wrong');
 
-            currentState.answers.push({ q: q.q, selected: q.a[index], correct: q.a[q.c], isCorrect });
+            currentState.userAnswers.push({
+                questionNumber: currentState.currentQuestion + 1,
+                question: q.question,
+                category: q.category,
+                selectedAnswer: selectedAnswer,
+                correctAnswer: q.correctAnswer,
+                isCorrect: isCorrect,
+                explanation: q.explanation
+            });
 
             if (isCorrect) {
                 currentState.score++;
@@ -1095,12 +1390,13 @@
         }
 
         function updateScoreDashboard() {
-            const total = currentState.questions.length;
-            const wrong = currentState.currentQuestion + 1 - currentState.score;
-            const percent = Math.round((currentState.score / (currentState.currentQuestion + 1)) * 100);
+            const answered = currentState.currentQuestion + 1;
+            const correct = currentState.score;
+            const wrong = answered - correct;
+            const percent = answered > 0 ? Math.round((correct / answered) * 100) : 0;
 
-            document.getElementById('correctCount').textContent = currentState.score;
-            document.getElementById('wrongCount').textContent = Math.max(0, wrong);
+            document.getElementById('correctCount').textContent = correct;
+            document.getElementById('wrongCount').textContent = wrong;
             document.getElementById('currentScore').textContent = percent + '%';
         }
 
@@ -1129,6 +1425,9 @@
 
             document.getElementById('ratingResult').textContent = rating;
 
+            showAreasToImprove();
+            showQuestionReview();
+
             localStorage.setItem('lastTestResult', JSON.stringify({
                 employee: currentState.employeeName,
                 level: currentState.level,
@@ -1139,17 +1438,90 @@
             }));
         }
 
+        function showAreasToImprove() {
+            const wrongAnswers = currentState.userAnswers.filter(a => !a.isCorrect);
+            const categoryCounts = {};
+
+            wrongAnswers.forEach(answer => {
+                if (!categoryCounts[answer.category]) {
+                    categoryCounts[answer.category] = 0;
+                }
+                categoryCounts[answer.category]++;
+            });
+
+            if (Object.keys(categoryCounts).length > 0) {
+                document.getElementById('areasToImprove').style.display = 'block';
+                const list = document.getElementById('areasList');
+                list.innerHTML = Object.entries(categoryCounts)
+                    .map(([category, count]) => `<li>${category}: ${count} ${count === 1 ? 'wrong' : 'wrong'}</li>`)
+                    .join('');
+            } else {
+                document.getElementById('areasToImprove').style.display = 'none';
+            }
+        }
+
+        function showQuestionReview() {
+            const container = document.getElementById('reviewContainer');
+            container.innerHTML = '';
+
+            currentState.userAnswers.forEach(answer => {
+                const item = document.createElement('div');
+                item.className = `review-item ${answer.isCorrect ? 'correct-item' : 'wrong-item'} show`;
+                item.setAttribute('data-type', answer.isCorrect ? 'correct' : 'wrong');
+
+                const status = answer.isCorrect ? '✓ Correct' : '✗ Wrong';
+                const statusClass = answer.isCorrect ? 'correct' : 'wrong';
+
+                item.innerHTML = `
+                    <div class="review-number">Question ${answer.questionNumber}</div>
+                    <span class="review-status ${statusClass}">${status}</span>
+                    <div class="review-category">Category: ${answer.category}</div>
+                    <div class="review-question">${answer.question}</div>
+                    <div class="answer-comparison">
+                        <div class="answer-comparison-label">Your Answer:</div>
+                        <div class="answer-comparison-text">${answer.selectedAnswer}</div>
+                    </div>
+                    ${!answer.isCorrect ? `
+                        <div class="answer-comparison">
+                            <div class="answer-comparison-label">Correct Answer:</div>
+                            <div class="answer-comparison-text">${answer.correctAnswer}</div>
+                        </div>
+                    ` : ''}
+                    <div class="review-explanation"><strong>Explanation:</strong> ${answer.explanation}</div>
+                `;
+
+                container.appendChild(item);
+            });
+        }
+
+        function filterReview(type) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const items = document.querySelectorAll('.review-item');
+            items.forEach(item => {
+                if (type === 'all') {
+                    item.classList.add('show');
+                } else if (type === 'correct' && item.getAttribute('data-type') === 'correct') {
+                    item.classList.add('show');
+                } else if (type === 'wrong' && item.getAttribute('data-type') === 'wrong') {
+                    item.classList.add('show');
+                } else {
+                    item.classList.remove('show');
+                }
+            });
+        }
+
         function printResults() {
             const managerNotes = document.getElementById('managerNotes').value;
             if (managerNotes) {
-                const notesHtml = `<p><strong>Manager Notes:</strong> ${managerNotes.replace(/\n/g, '<br>')}</p>`;
-                const resultsBefore = document.getElementById('resultsContainer').innerHTML;
-                document.getElementById('resultsContainer').innerHTML = resultsBefore + notesHtml;
+                const notesDiv = document.createElement('div');
+                notesDiv.style.marginTop = '20px';
+                notesDiv.innerHTML = `<strong>Manager Notes:</strong><p>${managerNotes.replace(/\n/g, '<br>')}</p>`;
+                document.getElementById('resultsContainer').appendChild(notesDiv);
             }
             window.print();
-            if (managerNotes) {
-                location.reload();
-            }
         }
 
         function restart() {
@@ -1161,7 +1533,7 @@
                 currentQuestion: 0,
                 score: 0,
                 questions: [],
-                answers: []
+                userAnswers: []
             };
 
             document.getElementById('resultsContainer').classList.remove('active');
@@ -1183,7 +1555,22 @@
             document.getElementById('storeLocation').value = '';
             document.getElementById('managerPassword').value = '';
             document.getElementById('passwordError').style.display = 'none';
+
+            currentState = {
+                level: null,
+                test: null,
+                employeeName: null,
+                storeLocation: null,
+                currentQuestion: 0,
+                score: 0,
+                questions: [],
+                userAnswers: []
+            };
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            validateQuestionBank();
+        });
 
         document.addEventListener('keypress', function(e) {
             if (e.key === 'Enter' && document.getElementById('passwordModal').classList.contains('active')) {
